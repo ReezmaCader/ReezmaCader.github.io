@@ -4,8 +4,6 @@
     box-sizing: border-box;
 }
 
-html {
-}
 
 .navbar {
     position: fixed;
@@ -13,7 +11,7 @@ html {
     justify-content: center;
     align-items: center;
     padding-left: 600px;
-    background-color: lightgrey;
+    background-color: whitesmoke;
     width: 100%;
     display: flex;
 
@@ -43,7 +41,7 @@ html {
 }
 
 .navbar ul li a:hover {
-    background-color: rgb(249, 203, 239);
+    background-color:  rgb(244, 216, 216);
     color: black;
     box-shadow: 0 0 10px black;
 }
