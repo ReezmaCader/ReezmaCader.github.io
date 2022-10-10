@@ -10,9 +10,7 @@
         integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-
-<body>
-
+<header>
     <nav class="navbar">
         <ul>
             <li><a href="#home">HOME</a></li>
@@ -23,6 +21,11 @@
 
         </ul>
     </nav>
+</header>
+
+<body>
+
+    
     <section id="home">
         <div class="main">
             <h1 class="headings"> I AM <br><b> Reezma Cader...</b></h1>
@@ -167,9 +170,32 @@
             </div>
         </div>
     </section>
+    
 
     <section id="contact">
         <h1 class="headings">|CONTACT|</h1>
+
+            <form method="post" id="userform" action="#" class=" row g-lg-3 gy-3">
+                
+                    <input type="text" class="form-control" placeholder="Enter your name" id="name">
+                    <br>
+                
+                    <input type="email" class="form-control" placeholder="Enter your email" id="email">
+                <br>
+                
+                
+                    <input type="text" class="form-control" placeholder="Enter subject" id="subject">
+                <br>
+                
+                
+                    <textarea name="" class="form-control" placeholder="Enter your message" id="message"></textarea>
+                <br>
+            
+                
+                    <input type="submit" class="btn btn-brand" value="Send">
+                
+            </form>
+
 
         <footer>
             <div class="footer">
@@ -183,6 +209,43 @@
                     </div>
                 </div>
         </footer>
+
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
+            import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-database.js";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            const firebaseConfig = {
+              apiKey: "AIzaSyAg28Tk_1xo-OR-8EGFzp2Z4EJxeg8t3BE",
+              authDomain: "portfolio-ffc05.firebaseapp.com",
+              databaseURL: "https://portfolio-ffc05-default-rtdb.asia-southeast1.firebasedatabase.app",
+              projectId: "portfolio-ffc05",
+              storageBucket: "portfolio-ffc05.appspot.com",
+              messagingSenderId: "986688209689",
+              appId: "1:986688209689:web:a1f658d1ca47a9a1ccbb88"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app);
+
+            document.getElementById("userform").addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    let name = document.getElementById("name").value;
+                    let email = document.getElementById("email").value;
+                    let subject = document.getElementById("subject").value;
+                    let message = document.getElementById("message").value;
+                    set(ref(db, 'users/' + name), {
+                        email: email,
+                        subject: subject,
+                        message: message,
+
+                    });
+                });   
+          </script>
 
 </body>
 
